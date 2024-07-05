@@ -1,0 +1,18 @@
+<div>
+       <table class="table">
+              <thead>
+                     <tr>
+                            <th>Sr.No.</th>
+                            <th>Name</th>
+                            <th>Place</th>
+                     </tr>
+              </thead>
+              <tbody *ngIf="receivedData">
+                     <tr *ngFor="let employee of receivedData; let i = index">
+                            <td>{{i+1}}</td>
+                            <td>{{employee.name}}</td>
+                            <td>{{employee.place}}</td>
+                     </tr>
+              </tbody>
+       </table>
+</div>
