@@ -11,4 +11,12 @@ export class DataService {
   getData(): any {
     return this.http.get("http://localhost:3000/employees")
   }
+
+  postData(empObj: any): any {
+    return this.http.post("http://localhost:3000/employees", empObj)
+  }
+
+  deleteData(empId: any): any {
+    return this.http.delete("http://localhost:3000/employees/" + empId)
+  }
 }

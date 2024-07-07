@@ -1,18 +1,56 @@
-<div>
-       <table class="table">
+<div *ngIf="receivedData?.length != 0">
+       <table class="table table-hover">
               <thead>
                      <tr>
                             <th>Sr.No.</th>
                             <th>Name</th>
                             <th>Place</th>
+                            <th>Add</th>
+                            <th>Update</th>
+                            <th>Delete</th>
                      </tr>
               </thead>
-              <tbody *ngIf="receivedData">
+              <tbody>
                      <tr *ngFor="let employee of receivedData; let i = index">
                             <td>{{i+1}}</td>
                             <td>{{employee.name}}</td>
                             <td>{{employee.place}}</td>
+                            <td (click)="addEmployee(employee.id)">
+                                   <button class="btn btn-sm btn-success">Add</button>
+                            </td>
+                            <td (click)="updateEmployee(employee.id)">
+                                   <button class="btn btn-sm btn-warning">Update</button>
+                            </td>
+                            <td (click)="deleteEmployee(employee.id)">
+                                   <button class="btn btn-sm btn-danger">Delete</button>
+                            </td>
                      </tr>
               </tbody>
        </table>
+
+       <div *ngIf="addNewEmployeeFlag" class="card my-3">
+              <form [formGroup]="employeeForm" (ngSubmit)="submitData()">
+                     <div class="card-body">
+                            <div class="form-group my-3">
+                                   <label for="empId" class="mb-1">Employee's Id</label>
+                                   <input type="number" id="empId" class="form-control" formControlName="empId">
+                            </div>
+                            <div class="form-group my-3">
+                                   <label for="empName" class="mb-1">Enter Employee's Name</label>
+                                   <input type="text" id="empName" class="form-control" formControlName="name">
+                            </div>
+                            <div class="form-group my-3">
+                                   <label for="empPlace" class="mb-1">Enter Employee's Place</label>
+                                   <input type="text" id="empPlace" class="form-control" formControlName="place">
+                            </div>
+                     </div>
+                     <div class="form-group mt-2 card-footer text-center">
+                            <button id=submitBtn class="btn btn-sm btn-success">Add New Employee</button>
+                            <div *ngIf="successMsg" class="text-success text-center">{{successMsg}}</div>
+                     </div>
+              </form>
+       </div>
+</div>
+<div *ngIf="receivedData?.length == 0" class="text-center my-4 text-danger" style="text-shadow: 1px 1px 1px black;">
+       <h1>No Data in DB</h1>
 </div>

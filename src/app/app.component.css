@@ -1,0 +1,22 @@
+.table {
+       width: 80%;
+       margin: auto;
+}
+
+.btn {
+       width: 100px;
+}
+
+#submitBtn {
+       width: 50%;
+}
+
+.card {
+       width: 50%;
+       margin: auto;
+       box-shadow: 2px 2px 2px black;
+}
+
+label {
+       font-weight: 500;
+}
